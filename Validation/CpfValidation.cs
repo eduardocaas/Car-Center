@@ -1,9 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarCenter.Utils
+namespace CarCenter.Validation
 {
     public class CpfValidation : ValidationAttribute
     {
+        public CpfValidation(string errorMessage) : base(errorMessage)
+        {
+        }
+
         public override bool IsValid(object? value)
         {
             string? cpfValue = value as string;
