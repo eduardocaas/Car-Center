@@ -15,12 +15,14 @@ namespace CarCenter.Data.Mappings
             builder
                 .Property(c => c.Marca)
                 .IsRequired()
-                .HasColumnType("VARCHAR");
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(80); 
 
             builder
                 .Property(c => c.Modelo)
                 .IsRequired()
-                .HasColumnType("VARCHAR");
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(80);
 
             builder
                 .Property(c => c.AnoModelo)
@@ -37,7 +39,8 @@ namespace CarCenter.Data.Mappings
             builder
                 .Property(c => c.Chassi)
                 .IsRequired()
-                .HasColumnType("VARCHAR");
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(100);
 
             builder
                 .Property(c => c.Preco)

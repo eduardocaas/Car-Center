@@ -15,7 +15,8 @@ namespace CarCenter.Data.Mappings
             builder
                 .Property(v => v.Nome)
                 .IsRequired()
-                .HasColumnType("VARCHAR");
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(80);
 
             builder
                 .Property(v => v.DataAdmissao)
@@ -27,7 +28,8 @@ namespace CarCenter.Data.Mappings
             builder
                 .Property(v => v.Matricula)
                 .IsRequired()
-                .HasColumnType("VARCHAR");
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(80);
 
             builder
                 .Property(v => v.Salario)
