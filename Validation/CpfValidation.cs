@@ -1,8 +1,17 @@
-﻿namespace CarCenter.Utils
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CarCenter.Utils
 {
-    public static class CpfUtil
+    public class CpfValidation : ValidationAttribute
     {
-        public static bool IsCpf(string cpf)
+        public override bool IsValid(object? value)
+        {
+            string? cpfValue = value as string;
+
+            return this.IsCpf(cpfValue);
+        }
+
+        public bool IsCpf(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
