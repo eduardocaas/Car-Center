@@ -13,5 +13,13 @@ namespace CarCenter.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Carro> Carros { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=localhost, 1433;
+                                    Trusted_Connection=True;
+                                    TrustServerCertificate=True;
+                                    Database=CarCenter;");
+        }
+
     }
 }
