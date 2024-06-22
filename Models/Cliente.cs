@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CarCenter.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace CarCenter.Models
 {
@@ -11,6 +12,7 @@ namespace CarCenter.Models
         public string Email { get; set; }
         public string Telefone { get; set; }
         public string Endereco { get; set; }
+        [CpfValidation(errorMessage: "Insira um CPF válido")]
         public string CPF { get; set; }
     }
 }
