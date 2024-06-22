@@ -1,7 +1,10 @@
+using CarCenter.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<CarCenterContext>();
 
 var app = builder.Build();
 
