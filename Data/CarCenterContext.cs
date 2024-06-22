@@ -1,4 +1,5 @@
-﻿using CarCenter.Models;
+﻿using CarCenter.Data.Mappings;
+using CarCenter.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarCenter.Data
@@ -21,5 +22,12 @@ namespace CarCenter.Data
                                     Database=CarCenter;");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CarroMapping());
+            modelBuilder.ApplyConfiguration(new ClienteMapping());
+            modelBuilder.ApplyConfiguration(new NotaMapping());
+            modelBuilder.ApplyConfiguration(new VendedorMapping());
+        }
     }
 }
