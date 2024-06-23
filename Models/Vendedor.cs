@@ -16,6 +16,7 @@ namespace CarCenter.Models
         [MaxLength(80, ErrorMessage = "MaxLength")]
         public string Matricula { get; set; }
         [Required(ErrorMessage = "Required")]
+        [DisplayFormat(DataFormatString = "{0:#,##0.00}")]
         public float Salario { get; set; }
 
         public float CalculoComissao(float ValorVenda)
