@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarCenter.Validation
+namespace CarCenter.Validations
 {
     public class CpfValidation : ValidationAttribute
     {

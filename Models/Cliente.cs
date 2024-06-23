@@ -1,4 +1,4 @@
-﻿using CarCenter.Validation;
+﻿using CarCenter.Validations;
 using System.ComponentModel.DataAnnotations;
 
 namespace CarCenter.Models
