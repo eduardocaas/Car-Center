@@ -19,20 +19,26 @@ namespace CarCenter.Data.Mappings
 
             builder
                 .Property(n => n.DataEmissao)
+                .IsRequired(false)
                 .HasColumnType("DATETIME")
                 .HasColumnName("Data_Emissao")
-                .HasDefaultValue(DateTime.Now);
+                .HasDefaultValueSql("GETDATE()");
 
             builder
                 .Property(n => n.Garantia)
+                .IsRequired(false)
                 .HasColumnType("DATETIME")
-                .HasDefaultValue(DateTime.Now.AddYears(2)); // Definido 2 anos de garantia
+                .HasDefaultValueSql("DATEADD(YEAR, 2, GETDATE())"); // Definido 2 anos de garantia
 
             builder
                 .Property(n => n.ValorVenda)
                 .IsRequired()
                 .HasColumnType("FLOAT")
                 .HasColumnName("Valor_Venda");
+
+            builder
+                .HasIndex(n => n.Numero, "IX_Nota_Numero")
+                .IsUnique();
         }
     }
 }
