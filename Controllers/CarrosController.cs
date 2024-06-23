@@ -25,8 +25,17 @@ namespace CarCenter.Controllers
         {
             var carros = _context.Carros.Where(c => c.CarroStatus == CarroStatus.VENDENDO);
 
-              return carros != null ? 
-                          View(await _context.Carros.ToListAsync()) :
+            return carros != null ? 
+                          View(carros) :
+                          Problem("Entity set 'CarCenterContext.Carros'  is null.");
+        }
+
+        public async Task<IActionResult> Vendidos()
+        {
+            var carros = _context.Carros.Where(c => c.CarroStatus == CarroStatus.VENDIDO);
+
+            return carros != null ?
+                          View(carros) :
                           Problem("Entity set 'CarCenterContext.Carros'  is null.");
         }
 
