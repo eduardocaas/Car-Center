@@ -11,8 +11,10 @@ namespace CarCenter.Models
         public int Numero { get; set; }
         [ValidateNever]
         [Display(Name = "Emissão")]
+        [DataType(DataType.Date)]
         public DateTime? DataEmissao { get; set; }
         [ValidateNever]
+        [DataType(DataType.Date)]
         public DateTime? Garantia { get; set; }
         [Required(ErrorMessage = "Required")]
         [Display(Name = "Valor da venda")]
