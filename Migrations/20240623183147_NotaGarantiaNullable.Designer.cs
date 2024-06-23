@@ -4,6 +4,7 @@ using CarCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarCenter.Migrations
 {
     [DbContext(typeof(CarCenterContext))]
-    partial class CarCenterContextModelSnapshot : ModelSnapshot
+    [Migration("20240623183147_NotaGarantiaNullable")]
+    partial class NotaGarantiaNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,16 +122,16 @@ namespace CarCenter.Migrations
                     b.Property<int>("CompradorId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DataEmissao")
+                    b.Property<DateTime>("DataEmissao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DATETIME")
-                        .HasColumnName("Data_Emissao")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValue(new DateTime(2024, 6, 23, 15, 31, 47, 161, DateTimeKind.Local).AddTicks(6687))
+                        .HasColumnName("Data_Emissao");
 
                     b.Property<DateTime?>("Garantia")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DATETIME")
-                        .HasDefaultValueSql("DATEADD(YEAR, 2, GETDATE())");
+                        .HasDefaultValue(new DateTime(2026, 6, 23, 15, 31, 47, 161, DateTimeKind.Local).AddTicks(7143));
 
                     b.Property<int>("Numero")
                         .HasColumnType("INT");
@@ -163,7 +165,7 @@ namespace CarCenter.Migrations
                     b.Property<DateTime>("DataAdmissao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2024, 6, 23, 15, 41, 13, 310, DateTimeKind.Local).AddTicks(6101))
+                        .HasDefaultValue(new DateTime(2024, 6, 23, 15, 31, 47, 161, DateTimeKind.Local).AddTicks(8214))
                         .HasColumnName("Data_Admissao");
 
                     b.Property<string>("Matricula")
