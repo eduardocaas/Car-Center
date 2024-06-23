@@ -11,7 +11,6 @@ namespace CarCenter.Models
         [DataType(DataType.Date)]
         [Display(Name = "Emissão")]
         public DateTime DataEmissao { get; set; }
-        [Required(ErrorMessage = "Required")]
         [DataType(DataType.Date)]
         public DateTime Garantia { get; set; }
         [Required(ErrorMessage = "Required")]
