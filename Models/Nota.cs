@@ -19,12 +19,12 @@ namespace CarCenter.Models
         public float ValorVenda { get; set; }
 
         [Required(ErrorMessage = "Required")]
-        [Display(Name = "Nome do comprador")]
+        [Display(Name = "CPF do comprador")]
         public int CompradorId { get; set; }
         public Cliente Comprador { get; set; }
 
         [Required(ErrorMessage = "Required")]
-        [Display(Name = "Nome do vendedor")]
+        [Display(Name = "Matrícula do vendedor")]
         public int VendedorId { get; set; }
         public Vendedor Vendedor { get; set; }
 
