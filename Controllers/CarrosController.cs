@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarCenter.Data;
 using CarCenter.Models;
+using CarCenter.Models.Enums;
 
 namespace CarCenter.Controllers
 {
@@ -22,7 +23,9 @@ namespace CarCenter.Controllers
         // GET: Carros
         public async Task<IActionResult> Index()
         {
-              return _context.Carros != null ? 
+            var carros = _context.Carros.Where(c => c.CarroStatus == CarroStatus.VENDENDO);
+
+              return carros != null ? 
                           View(await _context.Carros.ToListAsync()) :
                           Problem("Entity set 'CarCenterContext.Carros'  is null.");
         }
