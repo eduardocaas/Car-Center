@@ -9,6 +9,9 @@ namespace CarCenter.Models
         [Required]
         [MaxLength(80)]
         public string Nome { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
         [EmailAddress]
         [Required]
