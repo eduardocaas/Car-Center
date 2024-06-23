@@ -1,4 +1,5 @@
 ﻿using CarCenter.Models;
+using CarCenter.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -41,6 +42,11 @@ namespace CarCenter.Data.Mappings
                 .IsRequired()
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(100);
+
+            builder
+                .Property(c => c.CarroStatus)
+                .IsRequired(false)
+                .HasDefaultValue(CarroStatus.VENDENDO);
 
             builder
                 .Property(c => c.Preco)
