@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<CarCenter.Models.Carro>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Carros";
 }
 
-<h1>Index</h1>
+<h1>Carros</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar</a>
+    <span> - </span>
+    <a asp-action="Vendidos">Carros vendidos</a>
 </p>
 <table class="table">
     <thead>
