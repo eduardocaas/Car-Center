@@ -72,6 +72,11 @@ namespace CarCenter.Controllers
             }
             _context.Add(nota);
             await _context.SaveChangesAsync();
+
+            Carro? carro = _context.Carros.FirstOrDefault(c => c.Id == nota.CarroId);
+            _context.Carros.Remove(carro);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
