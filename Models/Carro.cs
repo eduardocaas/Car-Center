@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CarCenter.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace CarCenter.Models
 {
@@ -23,5 +24,6 @@ namespace CarCenter.Models
         [DisplayFormat(DataFormatString = "{0:#,##0.00}")]
         [Required(ErrorMessage = "Required")]
         public float Preco { get; set; }
+        public CarroStatus CarroStatus { get; set; }
     }
 }
