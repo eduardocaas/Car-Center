@@ -63,16 +63,16 @@ namespace CarCenter.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Numero,DataEmissao,Garantia,ValorVenda,CompradorId,VendedorId,CarroId")] Nota nota)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(nota);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewData["CarroId"] = new SelectList(_context.Carros, "Id", "Chassi", nota.CarroId);
+                ViewData["CompradorId"] = new SelectList(_context.Clientes, "Id", "CPF", nota.CompradorId);
+                ViewData["VendedorId"] = new SelectList(_context.Vendedores, "Id", "Matricula", nota.VendedorId);
+                return View(nota);
             }
-            ViewData["CarroId"] = new SelectList(_context.Carros, "Id", "Chassi", nota.CarroId);
-            ViewData["CompradorId"] = new SelectList(_context.Clientes, "Id", "CPF", nota.CompradorId);
-            ViewData["VendedorId"] = new SelectList(_context.Vendedores, "Id", "Matricula", nota.VendedorId);
-            return View(nota);
+            _context.Add(nota);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Notas/Edit/5
