@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarCenter.Data;
 using CarCenter.Models;
+using CarCenter.Models.Enums;
 
 namespace CarCenter.Controllers
 {
@@ -74,9 +75,11 @@ namespace CarCenter.Controllers
             await _context.SaveChangesAsync();
 
             Carro? carro = _context.Carros.FirstOrDefault(c => c.Id == nota.CarroId);
-            _context.Carros.Remove(carro);
-            await _context.SaveChangesAsync();
+            if (carro == null) return View(nota);
+            carro.CarroStatus = CarroStatus.VENDIDO;
+            _context.Carros.Update(carro);
 
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
